@@ -1,38 +1,34 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
 
 export class RemoteUnsafe extends React.Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {};
-        
+
         this.onClick = this.onClick.bind(this);
     }
 
-    onClick (event)
-    {
+    onClick(event) {
         fetch('http://localhost:9000/inject')
-        .then (response => response.text())
-        .then (body => this.setState ({injected: body}));
+            .then(response => response.text())
+            .then(body => this.setState({ injected: body }));
     }
 
-    render ()
-    {
+    render() {
 
         return (
+            <MDBContainer>
+                <MDBCard className="card-body">
+                    <MDBCardTitle>Unsafe Injection of Remote Data</MDBCardTitle>
+                    <MDBCardText>Click button to unsafely inject content from "{this.props.src}"</MDBCardText>
 
-            <div>
-                <p/>
-                <hr/>
-                Click button to unsafely inject content from "{this.props.src}"
-                <br/>
-                <Button onClick={this.onClick}>ClickMe</Button>
-                <div className="result" dangerouslySetInnerHTML={{__html: this.state.injected}}/>
-
-            </div>
-            
+                    <Button onClick={this.onClick}>ClickMe</Button>
+                    <div className="result" dangerouslySetInnerHTML={{ __html: this.state.injected }} />
+                </MDBCard>
+            </MDBContainer>
         );
     }
 

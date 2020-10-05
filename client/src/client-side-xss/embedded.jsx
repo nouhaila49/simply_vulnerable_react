@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function InnerElement(props) {
-    const script = "<div onMouseOver=\"".concat(props.embeddedScript, "\">THIS IS AN EMBEDDED SCRIPT</div>");
+    const script = "<div onMouseOver=\"".concat(props.embeddedScript, "\">HOVER HERE TO INVOKE EMBEDDED SCRIPT</div>");
 
     return (
         <div className="result" dangerouslySetInnerHTML={{ __html: script }} />

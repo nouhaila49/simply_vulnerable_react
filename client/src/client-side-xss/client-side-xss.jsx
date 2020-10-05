@@ -1,4 +1,6 @@
 import React from 'react';
+import { MDBTable, MDBTableBody, MDBTableHead, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
+
 
 class ClientSideXSSBase extends React.Component {
 
@@ -22,37 +24,56 @@ class ClientSideXSSBase extends React.Component {
 
     }
 
-    instructions() {
-        return (
-            <p>Try pasting "&lt;div onmouseover="alert('hi');"&gt;test&lt;/div&gt;" in the Value box,
-            then mouse-over the value box.</p>
-        );
+    resultDisplay() {
+        return (<div className="result" ref={this.divRef} id='targetDiv'>&nbsp;</div>);
     }
 
-    resultDisplay() {
-        return (<div className="result" ref={this.divRef} id='targetDiv' />);
+    discussion() {
+
+    }
+
+    renderInput() {
+        return (
+            <form onSubmit={this.onSubmit}>
+                <label>Value: </label>
+                <input type="text" value={this.state.formValue} onChange={this.onChange} />
+                <input type="submit" value="Submit" />
+            </form>
+        );
+
     }
 
     render() {
 
         return (
-            <div>
+            <MDBContainer>
+                <MDBCard className="card-body">
 
-                <h1>{this.props.headerText}</h1>
+                    <MDBCardTitle>{this.props.headerText}</MDBCardTitle>
+                    <MDBCardText>{this.discussion()}</MDBCardText>
 
-                {this.instructions()}
+                    <MDBTable>
+                        <MDBTableHead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Result</th>
+                            </tr>
+                        </MDBTableHead>
 
-                <form onSubmit={this.onSubmit}>
-                    <label>
-                        Value:
-                    <input type="text" value={this.state.formValue} onChange={this.onChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+                        <MDBTableBody>
+                            <tr>
+                                <td>
+                                    {this.renderInput()}
+                                </td>
+                                <td>
+                                    {this.resultDisplay()}
+                                </td>
+                            </tr>
+                        </MDBTableBody>
+                    </MDBTable>
 
-                {this.resultDisplay()}
-
-            </div>
+                </MDBCard>
+            </MDBContainer>
         );
     }
 

@@ -7,29 +7,20 @@ export class ReactDomVulnerable extends ClientSideXSSBase {
         event.preventDefault();
     }
 
-
-    render() {
-
-        return (
-            <div>
-
-                <h1>{this.props.headerText}</h1>
-
-                <p>Try pasting "&lt;div onmouseover="alert('hi');"&gt;test&lt;/div&gt;" in the Value box,
-                    then mouse-over the value box.</p>
-
-
-                <form onSubmit={this.onSubmit}>
-                    <label>
-                        Value:
-                    <input type="text" onChange={this.onChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-                <div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }} />
-            </div>
-        );
+    resultDisplay ()
+    {
+        return (<div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }}></div>);
     }
 
+
+    discussion() {
+        return (
+            <div>
+                This uses the property dangerouslySetInnerHTML to inject user input into the DOM.  This is similar to
+                the use of the document DOM but uses React's capabilities to inject untrusted content.
+            </div>
+        );
+
+    }
 }
 

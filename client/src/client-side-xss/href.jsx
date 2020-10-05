@@ -15,13 +15,16 @@ export class Href extends ClientSideXSSBase {
     }
 
 
-    instructions() {
+    discussion() {
         return (
-            <div>
-                <h1>Anchor injection example</h1>
+            <p>
+                This changes the href on an anchor.  This can redirect to a potentially vulnerable site or execute
+                a script in response to the user clicking the link.
+                <p>
+                    Try pasting "javascript: alert("hi");" in the box, click submit, then click the link.
+                </p>
+            </p>
 
-                <p>Try pasting "javascript: alert("hi");" in the box, then click the link.</p>
-            </div>
         );
     }
 
