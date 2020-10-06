@@ -21,18 +21,13 @@ export class RemoteSafe extends React.Component {
     render() {
 
         return (
+            <MDBCard className="card-body">
+                <MDBCardTitle>Safe Injection of Remote Data</MDBCardTitle>
+                <MDBCardText>Click button to <b>safely</b> inject content from "{this.props.src}"</MDBCardText>
 
-            <MDBContainer>
-                <MDBCard className="card-body">
-                    <MDBCardTitle>Safe Injection of Remote Data</MDBCardTitle>
-                    <MDBCardText>Click button to <b>safely</b> inject content from "{this.props.src}"</MDBCardText>
-
-                    <Button onClick={this.onClick}>ClickMe</Button>
-                    <div className="result">{this.state.injected}</div>
-                </MDBCard>
-            </MDBContainer>
-
-
+                <Button onClick={this.onClick}>ClickMe</Button>
+                <div className="result">{this.state.injected}</div>
+            </MDBCard>
         );
     }
 

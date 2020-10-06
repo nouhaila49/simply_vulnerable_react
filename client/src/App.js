@@ -10,7 +10,7 @@ import { ReactDomVulnerable } from './client-side-xss/reactdom_vulnerable.jsx';
 import { Safe } from './client-side-xss/safe.jsx';
 import { Href } from './client-side-xss/href.jsx';
 import { QueryParams } from './client-side-xss/queryparams.jsx';
-import { Embedded, EmbeddedDerivation } from './client-side-xss/embedded.jsx';
+import { EmbeddedRenderingFunc, EmbeddedRenderingClass } from './client-side-xss/embedded.jsx';
 import { RemoteUnsafe } from './server-side-xss/remote_unsafe.jsx';
 import { RemoteSafe } from './server-side-xss/remote_safe.jsx';
 import { UnsafeRenderFunc, SafeRenderFunc } from "./server-side-xss/remote_render_funcs.jsx";
@@ -97,8 +97,8 @@ class App extends React.Component {
               no source data.
             </MDBCardText>
 
-            <Embedded genericInput={this.state.genericInput} />
-            <EmbeddedDerivation script={"alert('embedded script for a component derived from React.Component');"} genericInput={this.state.genericInput} />
+            <EmbeddedRenderingFunc genericInput={this.state.genericInput} />
+            <EmbeddedRenderingClass script={"alert('embedded script for a component derived from React.Component');"} genericInput={this.state.genericInput} />
           </MDBCard>
 
 

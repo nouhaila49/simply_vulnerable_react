@@ -13,7 +13,7 @@ function InnerElement(props) {
 }
 
 
-export function Embedded(props) {
+export function EmbeddedRenderingFunc(props) {
 
     // There should be flow from "script" to dangerouslySetInnerHtml
     const script = "alert('an embedded script is running');";
@@ -25,7 +25,7 @@ export function Embedded(props) {
 }
 
 
-export class EmbeddedDerivation extends React.Component {
+export class EmbeddedRenderingClass extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
