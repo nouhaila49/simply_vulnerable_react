@@ -40,5 +40,27 @@ export class EmbeddedRenderingClass extends React.Component {
     }
 }
 
+export class EmbeddedDerivedRenderingClassWithCtor extends EmbeddedRenderingClass {
+    constructor(props) {
+        super(props);
+        this.foo = props.script;
+    }
 
+    render() {
+        return (
+            <InnerElement embeddedScript={this.foo} genericInput={this.props.genericInput} />
+        );
+
+    }
+}
+
+export class EmbeddedDerivedRenderingClassWithoutCtor extends EmbeddedRenderingClass {
+
+    render() {
+        return (
+            <InnerElement embeddedScript={this.script} genericInput={this.props.genericInput} />
+        );
+
+    }
+}
 

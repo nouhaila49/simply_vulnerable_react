@@ -10,7 +10,12 @@ import { ReactDomVulnerable } from './client-side-xss/reactdom_vulnerable.jsx';
 import { Safe } from './client-side-xss/safe.jsx';
 import { Href } from './client-side-xss/href.jsx';
 import { QueryParams } from './client-side-xss/queryparams.jsx';
-import { EmbeddedRenderingFunc, EmbeddedRenderingClass } from './client-side-xss/embedded.jsx';
+import {
+  EmbeddedRenderingFunc,
+  EmbeddedRenderingClass,
+  EmbeddedDerivedRenderingClassWithoutCtor,
+  EmbeddedDerivedRenderingClassWithCtor 
+} from './client-side-xss/embedded.jsx';
 import { RemoteUnsafe } from './server-side-xss/remote_unsafe.jsx';
 import { RemoteSafe } from './server-side-xss/remote_safe.jsx';
 import { UnsafeRenderFunc, SafeRenderFunc } from "./server-side-xss/remote_render_funcs.jsx";
@@ -49,17 +54,17 @@ class App extends React.Component {
         <MDBContainer>
 
           <MDBCard className="card-body">
-          <MDBCardTitle>Generic Input</MDBCardTitle>
-          <MDBCardText>
-            Place a value in the input below.  The state of it is maintained in the root
-            component and passed through props to contained components.  The value is rendered in
-            the contained components without sanitization.  This will demonstrate data flows to
-            potentially vulnerable inputs.
+            <MDBCardTitle>Generic Input</MDBCardTitle>
+            <MDBCardText>
+              Place a value in the input below.  The state of it is maintained in the root
+              component and passed through props to contained components.  The value is rendered in
+              the contained components without sanitization.  This will demonstrate data flows to
+              potentially vulnerable inputs.
             <div>
-              <textarea style={{width: "100%"}} onChange={(event) => this.setState({genericInput: event.target.value})} />
-            </div>
-          </MDBCardText>
-            
+                <textarea style={{ width: "100%" }} onChange={(event) => this.setState({ genericInput: event.target.value })} />
+              </div>
+            </MDBCardText>
+
           </MDBCard>
 
           <MDBCard className="card-body" >
@@ -71,7 +76,7 @@ class App extends React.Component {
             <MDBCardText>Try pasting "&lt;div onmouseover="alert('hi');"&gt;test&lt;/div&gt;" in each value box,
             submit, then mouse-over the result box.</MDBCardText>
 
-            <Vulnerable headerText="Vulnerable Component (Document DOM Write)" genericInput={this.state.genericInput}/>
+            <Vulnerable headerText="Vulnerable Component (Document DOM Write)" genericInput={this.state.genericInput} />
             <ReactDomVulnerable headerText="Vulnerable Component (React DOM Write)" genericInput={this.state.genericInput} />
             <Safe headerText="Safe React Component" genericInput={this.state.genericInput} />
           </MDBCard>
@@ -80,8 +85,8 @@ class App extends React.Component {
 
           <MDBCard className="card-body">
             <MDBCardTitle>Other Client Injection Tests</MDBCardTitle>
-            <Href headerText="Anchor href Injection" genericInput={this.state.genericInput}/>
-            <QueryParams headerText="Script Injection via Query Parameters" genericInput={this.state.genericInput}/>
+            <Href headerText="Anchor href Injection" genericInput={this.state.genericInput} />
+            <QueryParams headerText="Script Injection via Query Parameters" genericInput={this.state.genericInput} />
           </MDBCard>
 
 
@@ -99,6 +104,8 @@ class App extends React.Component {
 
             <EmbeddedRenderingFunc genericInput={this.state.genericInput} />
             <EmbeddedRenderingClass script={"alert('embedded script for a component derived from React.Component');"} genericInput={this.state.genericInput} />
+            <EmbeddedDerivedRenderingClassWithCtor script={"alert('embedded script for a component derived from EmbeddedRenderingClass');"} genericInput={this.state.genericInput} />
+            <EmbeddedDerivedRenderingClassWithoutCtor script={"alert('embedded script for a component derived from EmbeddedRenderingClass (no ctor)');"} genericInput={this.state.genericInput} />
           </MDBCard>
 
 
@@ -109,7 +116,7 @@ class App extends React.Component {
               These show script data retrieved from a remote server and injected into the DOM.
             </MDBCardText>
 
-            <RemoteUnsafe src="http://localhost:9000/inject" genericInput={this.state.genericInput}/>
+            <RemoteUnsafe src="http://localhost:9000/inject" genericInput={this.state.genericInput} />
             <RemoteSafe src="http://localhost:9000/inject" genericInput={this.state.genericInput} />
 
             <MDBCard className="card-body">
