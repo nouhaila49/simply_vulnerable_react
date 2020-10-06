@@ -7,34 +7,31 @@ export class QueryParams extends ClientSideXSSBase {
         event.preventDefault();
     }
 
-    renderInput ()
-    {
+    renderInput() {
         return (
 
             <div>
                 {window.location.search}
             </div>
-            
+
         );
     }
 
-    componentDidMount ()
-    {
+    componentDidMount() {
         var split = window.location.search.slice(1).split("&");
         var stateContents = "";
 
-        split.forEach ( (val) => stateContents = stateContents + "<div>" + decodeURIComponent(val) + "</div>")
-
-
-        this.setState ({submittedFormValue: stateContents });
-
+        split.forEach((val) => stateContents = stateContents + "<div>" + decodeURIComponent(val) + "</div>")
+        this.setState({ submittedFormValue: stateContents });
     }
 
-    resultDisplay ()
-    {
-
-
-        return (<div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }} />);
+    resultDisplay() {
+        return (
+            <div>
+                <div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }} />
+                <div dangerouslySetInnerHTML={{ __html: this.props.genericInput }} />
+            </div>
+        );
     }
 
 

@@ -31,7 +31,11 @@ export class Href extends ClientSideXSSBase {
     resultDisplay() {
         // Note there is no DOM injection here.  Future versions of React are supposedly going to
         // block this assignment.  For now, the value is not sanitized by the React framework.
-        return (<a className="result" href={this.state.href}>ClickMe</a>);
+        return (
+            <div>
+                <a className="result" href={this.state.href}>ClickMe</a>
+                <div dangerouslySetInnerHTML={{ __html: this.props.genericInput }} />
+            </div>);
     }
 }
 

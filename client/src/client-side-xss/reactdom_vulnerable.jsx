@@ -7,9 +7,12 @@ export class ReactDomVulnerable extends ClientSideXSSBase {
         event.preventDefault();
     }
 
-    resultDisplay ()
-    {
-        return (<div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }}></div>);
+    resultDisplay() {
+        return (
+            <div>
+                <div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }} />
+                <div dangerouslySetInnerHTML={{ __html: this.props.genericInput }} />
+            </div>);
     }
 
 

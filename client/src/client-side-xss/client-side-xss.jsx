@@ -25,7 +25,12 @@ class ClientSideXSSBase extends React.Component {
     }
 
     resultDisplay() {
-        return (<div className="result" ref={this.divRef} id='targetDiv'>&nbsp;</div>);
+
+        return (
+            <div>
+                <div className="result" ref={this.divRef} id='targetDiv'>&nbsp;</div>
+                <div dangerouslySetInnerHTML={{ __html: this.props.genericInput }} />
+            </div>);
     }
 
     discussion() {
