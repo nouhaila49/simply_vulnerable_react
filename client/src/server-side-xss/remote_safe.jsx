@@ -15,7 +15,8 @@ export class RemoteSafe extends React.Component {
     onClick(event) {
         fetch('http://localhost:9000/inject')
             .then(response => response.text())
-            .then(body => this.setState({ injected: body }));
+            .then(body => this.setState({ injected: body }))
+            .catch(this.setState({ injected: "Unable to reach remote service." }));
     }
 
     render() {
@@ -27,6 +28,7 @@ export class RemoteSafe extends React.Component {
 
                 <Button onClick={this.onClick}>ClickMe</Button>
                 <div className="result">{this.state.injected}</div>
+                <div dangerouslySetInnerHTML={{__html: this.props.genericInput}} />
             </MDBCard>
         );
     }
