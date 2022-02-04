@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - run: set
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Code Checkout
       uses: actions/checkout@v2
