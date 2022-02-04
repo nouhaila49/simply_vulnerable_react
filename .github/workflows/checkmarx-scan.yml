@@ -14,7 +14,7 @@ jobs:
           checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
           checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
           checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
-          bug_tracker: sarif
+          bug_tracker: Sarif
           app: SimplyVulnerableReact
           break_build: true
           scanners: sast
