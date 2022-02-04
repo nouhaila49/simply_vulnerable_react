@@ -13,7 +13,7 @@ jobs:
     - name: Code Checkout
       uses: actions/checkout@v2
     - name: Checkmarx Scan
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@9975af7d6b957abec9ee9646effa3fb3b82c5314
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4
       with:
         project: simply_vulnerable_react-${{ github.ref_name }}
         team: /CxServer/GitHubAction
