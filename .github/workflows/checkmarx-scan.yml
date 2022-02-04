@@ -18,6 +18,7 @@ jobs:
           app: SimplyVulnerableReact
           break_build: true
           scanners: sast
+          incremental: false
 # Upload SARIF report for CodeQL / Security Alerts Processing
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
