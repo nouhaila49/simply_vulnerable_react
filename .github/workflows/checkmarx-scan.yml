@@ -8,7 +8,7 @@ jobs:
       - name: Checkmarx CxFlow Action
         uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3
         with:
-          project: simply_vulnerable_react
+          project: simply_vulnerable_react-${branch}
           team: /CxServer/GitHubAction
           checkmarx_url: ${{ secrets.CHECKMARX_URL }}
           checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
