@@ -11,7 +11,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Code Checkout
-      uses: actions/checkout@v2-branch
+      uses: actions/checkout@v2
     - name: Checkmarx Scan
       uses: checkmarx-ts/checkmarx-cxflow-github-action@9975af7d6b957abec9ee9646effa3fb3b82c5314
       with:
