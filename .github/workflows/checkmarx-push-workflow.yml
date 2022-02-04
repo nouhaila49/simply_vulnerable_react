@@ -15,7 +15,7 @@ jobs:
     - name: Checkmarx Scan
       uses: checkmarx-ts/checkmarx-cxflow-github-action@9975af7d6b957abec9ee9646effa3fb3b82c5314
       with:
-        project: simply_vulnerable_react-${{ github.ref }}
+        project: simply_vulnerable_react-${{ github.ref.name }}
         team: /CxServer/GitHubAction
         checkmarx_url: ${{ secrets.CHECKMARX_URL }}
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
@@ -25,7 +25,7 @@ jobs:
         incremental: false
         bug_tracker: Sarif
         preset: Checkmarx Express
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref.name }} --checkmarx.cx-branch=true
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --checkmarx.cx-branch=true
     # Upload the Report for CodeQL/Security Alerts
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
