@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBTable, MDBTableBody, MDBTableHead, MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
 
 
-class ClientSideXSSBase extends React.Component {
+export default class ClientSideXSSBase extends React.Component {
 
     constructor(props) {
         super(props);
@@ -84,4 +84,3 @@ class ClientSideXSSBase extends React.Component {
 
 }
 
-export default ClientSideXSSBase;

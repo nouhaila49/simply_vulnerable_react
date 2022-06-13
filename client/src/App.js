@@ -19,6 +19,7 @@ import {
 import { RemoteUnsafe } from './server-side-xss/remote_unsafe.jsx';
 import { RemoteSafe } from './server-side-xss/remote_safe.jsx';
 import { UnsafeRenderFunc, SafeRenderFunc } from "./server-side-xss/remote_render_funcs.jsx";
+import Logical from "./client-side-xss/logical.jsx"
 
 const serverMsg = "Server is unavailable.  (Did you start the api project?)";
 
@@ -87,6 +88,7 @@ class App extends React.Component {
             <MDBCardTitle>Other Client Injection Tests</MDBCardTitle>
             <Href headerText="Anchor href Injection" genericInput={this.state.genericInput} />
             <QueryParams headerText="Script Injection via Query Parameters" genericInput={this.state.genericInput} />
+            <Logical headerText="React Components Using Inputs in Render Logic" genericInput={this.state.genericInput} />
           </MDBCard>
 
 

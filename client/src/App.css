@@ -52,3 +52,13 @@
   padding: 4px;
   margin-bottom: 12px;
 }
+
+.radio_display label
+{
+  margin-left: 3px;
+}
+
+form label
+{
+  margin-right: 3px;
+}
