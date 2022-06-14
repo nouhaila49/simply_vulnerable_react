@@ -28,7 +28,6 @@ export class RemoteSafe extends React.Component {
 
                 <Button onClick={this.onClick}>ClickMe</Button>
                 <div className="result">{this.state.injected}</div>
-                <div dangerouslySetInnerHTML={{__html: this.props.genericInput}} />
             </MDBCard>
         );
     }

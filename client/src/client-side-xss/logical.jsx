@@ -62,12 +62,14 @@ export default class Logical extends ClientSideXSSBase {
             return (
                 <>
                     {gen.map((x) => {
-                        return (<MDBContainer className="result">
+                        return (
+                        <MDBContainer className="result">
                             <SafeRenderFunction injectable={this.state.formValue} iteration={x} />
                             <VulnerableRenderFunction injectable={this.state.formValue} iteration={x} />
                             <SafeRenderLambda injectable={this.state.formValue} iteration={x} />
                             <VulnerableRenderLambda injectable={this.state.formValue} iteration={x} />
-                        </MDBContainer>);
+                        </MDBContainer>
+                        );
                     })}
 
                     {extra}
@@ -84,6 +86,11 @@ export default class Logical extends ClientSideXSSBase {
                 This component will use logic and call different types of renderers.  The use of untrusted inputs/outputs in
                 logic executed in the renderer should not trigger a vulnerability result.  Untrusted inputs/outputs found
                 in the return statement of the renderer should trigger vulnerability results if unsanitized.
+                <div>
+                    <br/>
+                    Paste <code>&lt;img src="n.jpg" onerror="alert(1)" /&gt;</code> in the injectable value input
+                    to demonstrate how this works.  Set the display quantity to cause several components to be created.
+                </div>
             </div>
         );
     }

@@ -17,7 +17,6 @@ export function SafeRenderFunc(props) {
 
         <div>
             Safe: <div className="result">{props.val}</div>
-            <div dangerouslySetInnerHTML={{__html: props.genericInput}}/>
         </div>
     );
 }
