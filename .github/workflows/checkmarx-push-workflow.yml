@@ -24,7 +24,7 @@ jobs:
         scanners: sast
         incremental: false
         bug_tracker: Sarif
-        break_build: true
+        break_build: false
         preset: Checkmarx Express
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --checkmarx.cx-branch=true
     # Upload the Report for CodeQL/Security Alerts
