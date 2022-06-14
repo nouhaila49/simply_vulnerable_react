@@ -11,7 +11,6 @@ export default class ReactDomEscaped extends ReactDomVulnerable {
         return (
             <div>
                 <div className="result" dangerouslySetInnerHTML={{ __html: this.state.submittedFormValue }} />
-                <div dangerouslySetInnerHTML={{ __html: this.props.genericInput }} />
             </div>);
     }
 
