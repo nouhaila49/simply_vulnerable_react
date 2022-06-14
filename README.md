@@ -148,3 +148,4 @@ These lines contain vulnerabilities:
 <div dangerouslySetInnerHTML={{__html: this.props.genericInput}} />
 
 ```
+
