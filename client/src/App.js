@@ -20,6 +20,7 @@ import { RemoteUnsafe } from './server-side-xss/remote_unsafe.jsx';
 import { RemoteSafe } from './server-side-xss/remote_safe.jsx';
 import { UnsafeRenderFunc, SafeRenderFunc } from "./server-side-xss/remote_render_funcs.jsx";
 import Logical from "./client-side-xss/logical.jsx"
+import ReactDomEscaped from "./client-side-xss/reactdom_escaped"
 
 const serverMsg = "Server is unavailable.  (Did you start the api project?)";
 
@@ -79,6 +80,7 @@ class App extends React.Component {
 
             <Vulnerable headerText="Vulnerable Component (Document DOM Write)" genericInput={this.state.genericInput} />
             <ReactDomVulnerable headerText="Vulnerable Component (React DOM Write)" genericInput={this.state.genericInput} />
+            <ReactDomEscaped headerText="Vulnerable Component with Escaping (Not Vulnerable)" genericInput={this.state.genericInput} />
             <Safe headerText="Safe React Component" genericInput={this.state.genericInput} />
           </MDBCard>
 

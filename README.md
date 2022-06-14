@@ -79,6 +79,11 @@ These lines contain vulnerabilities:
 
 ```
 
+## `client-side-xss/reactdom_escaped.jsx`
+
+There are no vulnerabilities in this file.
+
+
 ## `client-side-xss/reactdom_vulnerable.jsx`
 
 These lines contain vulnerabilities:

@@ -20,7 +20,9 @@ export class ReactDomVulnerable extends ClientSideXSSBase {
         return (
             <div>
                 This uses the property dangerouslySetInnerHTML to inject user input into the DOM.  This is similar to
-                the use of the document DOM but uses React's capabilities to inject untrusted content.
+                the use of the document DOM but uses React's capabilities to inject untrusted content.  The binding
+                of the vulnerable value in this case is done indirectly from the base class state to a state
+                value used by the child class.
             </div>
         );
 
