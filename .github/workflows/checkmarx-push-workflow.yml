@@ -2,7 +2,7 @@ name: Checkmarx
 on:
   push:
     branches:
-      - master
+      - demo-master
 jobs:
   # This workflow contains a single job called "build"
   Checkmarx-Analysis:
