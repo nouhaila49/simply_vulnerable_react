@@ -1,6 +1,6 @@
 name: Build and Scan
 On: 
-  pushes:
+  push:
   pull_requests:
 jobs:
   build:
