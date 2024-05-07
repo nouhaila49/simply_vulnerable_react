@@ -23,5 +23,5 @@ jobs:
 
       - name: Install Client dependencies
         working-directory: client
-        run: npm clean-install
+        run: npm install
         
