@@ -1,0 +1,16 @@
+name: Build and Scan
+On: 
+  pushes:
+  pull_requests:
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Install node.js 14.x
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 14.x
+      - name: Install dependencies
+        run: npm clean-install
