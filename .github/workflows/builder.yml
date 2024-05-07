@@ -17,5 +17,11 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Install dependencies
-        run: npm clean-install
+      - name: Install API dependencies
+        working-directory: simply_vulnerable_react/api
+        run: npm ci
+
+      - name: Install Client dependencies
+        working-directory: simply_vulnerable_react/client
+        run: npm ci
+        
